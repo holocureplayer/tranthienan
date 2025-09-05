@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 df = pd.read_csv('anime_with_synopsis.csv')
 model = SentenceTransformer("all-MiniLM-L6-v2")
 df["real"] = df["sypnopsis"] + " " + "Genres : "+ df["Genres"] 
-sentences1 = df["sypnopsis"]   
+sentences1 = df["sypnopsis"].head(500)
 embeddings = model.encode(sentences1)
 initial_bot_message = "Nhập mô tả anime mà bạn muốn xem "
 def chatbot():
@@ -43,4 +43,5 @@ def chatbot():
 
 
 chatbot()
+
 
